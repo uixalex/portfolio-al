@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>AL — UI/UX Designer</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,900;1,900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+
+<link href="css/styles.css" rel="stylesheet"/><script defer="true" src="js/main.js"></script></head>
+<body>
+<div class="cursor-dot" id="cursor"></div>
+<header>
+<div class="logo" onclick="goTo('home');closeMenu()">
+AL
+  </div>
+<div class="nav-center" id="navLabel">[ HOME ]</div>
+<button class="menu-btn" onclick="openMenu()">MENU</button>
+<button class="menu-close" onclick="closeMenu()">✕</button>
+</header>
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+<div style="display:flex;flex-direction:column;gap:2px;">
+<span class="menu-nav-item" onclick="goTo('work');closeMenu()">Work</span>
+<span class="menu-nav-item" onclick="goTo('about');closeMenu()">About</span>
+<span class="menu-nav-item" onclick="goTo('contact');closeMenu()">Contact</span>
+</div>
+<div class="menu-footer">
+<div class="menu-socials">
+<a href="https://www.linkedin.com/in/alexlazarevic/" target="_blank" rel="noopener">LinkedIn</a>
+<a href="https://dribbble.com/aleksandralazarevic" target="_blank" rel="noopener">Dribbble</a>
+<a href="https://www.instagram.com/hipspace.studio/" target="_blank" rel="noopener">Instagram</a>
+</div>
+</div>
+</div>
+<!-- ═══ HOME ═══ -->
+<div class="page active" id="page-home">
+<canvas id="ripple-canvas"></canvas>
+<div class="center-label" id="centerLabel" onclick="goTo('work')"></div><div class="home-socials">
+<a href="https://www.linkedin.com/in/alexlazarevic/" target="_blank" rel="noopener">LINKEDIN</a>
+<a href="https://dribbble.com/aleksandralazarevic" target="_blank" rel="noopener">DRIBBBLE</a>
+<a href="https://www.instagram.com/hipspace.studio/" target="_blank" rel="noopener">INSTAGRAM</a>
+</div>
+<div class="home-content">
+<div class="home-headline-wrap">
+<h1 class="home-headline" id="homeHeadline">
+<span class="hl-line" id="hl0"></span>
+<span class="hl-line" id="hl1"></span>
+</h1>
+</div>
+<div class="home-bottom">
+<span>Visual Designer</span>
+<span>Available for work</span>
+</div>
+</div>
+</div>
+<!-- ═══ ABOUT ═══ -->
+<div class="page" id="page-about">
+<div class="about-left">
+<div class="about-canvas-wrap">
+<canvas id="about-canvas"></canvas>
+</div>
+</div>
+<div class="about-right">
+<div class="about-eyebrow">ABOUT ME</div>
+<h2 class="about-headline">Hello, I am Alex.</h2>
+<div class="about-body">
+<p>This isn't my standard portfolio.</p>
+<p>This is where I build. Live, experimental, sometimes broken, always intentional. Every project here is a question I needed to answer, a creative boundary I wanted to test, an idea I had to see through to the end.</p>
+</div>
+<div class="about-divider"></div>
+<div class="about-body">
+<p>I'm a designer with 5 years of experience across web, mobile, and brand identity. Lately I've been exploring what happens when design thinking meets AI.</p>
+<p>Not as a shortcut, but as a creative partner.</p>
+<p>If you're building something unconventional and need someone who thinks in both design and possibility — let's talk.</p>
+</div>
+<div class="about-interests">
+<span class="interest-tag">Web Design</span>
+<span class="interest-tag">Mobile UI</span>
+<span class="interest-tag">Brand Identity</span>
+<span class="interest-tag">Vibe Coding</span>
+<span class="interest-tag">AI Tools</span>
+<span class="interest-tag">Guitar</span>
+<span class="interest-tag">Cycling</span>
+<span class="interest-tag">Writing</span>
+</div>
+</div>
+</div>
+<!-- ═══ WORK ═══ -->
+<div class="page" id="page-work">
+<div class="work-puzzle-float" id="workPuzzleFloat">
+<svg height="100%" id="workPuzzleSvg" overflow="visible" viewbox="0 0 560 480" width="100%"></svg>
+</div>
+<nav class="project-list" id="projectList"></nav>
+</div>
+<!-- ═══ CONTACT ═══ -->
+<div class="page" id="page-contact">
+<div class="contact-inner">
+<div class="contact-eyebrow">GET IN TOUCH</div>
+<h2 class="contact-headline">Let's work<br/>together.</h2>
+<p class="contact-sub">Have a project in mind? I'm available for freelance work and collaborations. Send me a message and let's talk.</p>
+<a class="contact-email" href="/cdn-cgi/l/email-protection#355d5059595a7554591b5150465c525b"><span class="__cf_email__" data-cfemail="bdd5d8d1d1d2fddcd193d9d8ced4dad3">[email protected]</span> →</a>
+<div class="contact-links">
+<a href="https://www.linkedin.com/in/alexlazarevic/" target="_blank" rel="noopener">LINKEDIN</a>
+<a href="https://dribbble.com/aleksandralazarevic" target="_blank" rel="noopener">DRIBBBLE</a>
+<a href="https://www.instagram.com/hipspace.studio/" target="_blank" rel="noopener">INSTAGRAM</a>
+</div>
+</div>
+</div>
+<div class="status-bar">
+<span id="statusDesc"></span>
+<span id="statusYear"></span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="/images/quackables.png" width="800" height="600">
+  <rect width="800" height="600" fill="#111"/>
+  <line x1="0" y1="0" x2="800" y2="600" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <line x1="800" y1="0" x2="0" y2="600" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="400" y="315" font-family="monospace" font-size="13" fill="rgba(255,255,255,0.25)" text-anchor="middle">PROJECT IMAGE</text>
+</svg>
