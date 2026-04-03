@@ -21,6 +21,12 @@ function typewriterHeadline() {
   function tick() {
     if (lineIdx >= typeLines.length) {
       if (cursor) setTimeout(() => { cursor.remove(); }, 1200);
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          const el = document.getElementById('centerLabel');
+          if (el) { el.textContent = '[ THIS WAY ]'; el.classList.add('visible'); }
+        }, 1500);
+      }
       return;
     }
 
@@ -68,43 +74,16 @@ function goTo(page) {
     const h = document.getElementById('page-home');
     if (h && h._resetPuzzle) h._resetPuzzle();
     setTimeout(typewriterHeadline, 80);
-    runMobileIntro();
     if (h && h._syncPuzzleIntro) setTimeout(h._syncPuzzleIntro, 300);
   }
 }
 function openMenu()  { document.getElementById('menuOverlay').classList.add('open'); }
 function closeMenu() { document.getElementById('menuOverlay').classList.remove('open'); }
 
-function runMobileIntro() {
-  if (window.innerWidth > 768) return;
-  const text = 'designed in chaos....';
-  const tw  = document.getElementById('mobileTypewriter');
-  const btn = document.getElementById('mobileCta');
-  if (!tw || !btn) return;
-  tw.textContent = '';
-  tw.classList.remove('fade-out');
-  btn.classList.remove('visible');
-  let i = 0;
-  function typeNext() {
-    if (i < text.length) {
-      tw.textContent += text[i++];
-      const ch = text[i - 1];
-      const delay = ch === '.' ? 200 : 60 + Math.random() * 40;
-      setTimeout(typeNext, delay);
-    } else {
-      setTimeout(() => {
-        tw.classList.add('fade-out');
-        setTimeout(() => { btn.classList.add('visible'); }, 900);
-      }, 1200);
-    }
-  }
-  setTimeout(typeNext, 500);
-}
 
 window.addEventListener('load', () => {
   setTimeout(() => {
     typewriterHeadline();
-    runMobileIntro();
     const h = document.getElementById('page-home');
     if (h && h._syncPuzzleIntro) h._syncPuzzleIntro();
   }, 300);
