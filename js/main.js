@@ -22,10 +22,17 @@ function typewriterHeadline() {
     if (lineIdx >= typeLines.length) {
       if (cursor) setTimeout(() => { cursor.remove(); }, 1200);
       if (window.innerWidth <= 768) {
+        // 1. Wait 1s so user reads the text
+        // 2. Fade out headline
+        // 3. Wait for fade (600ms) then show button
         setTimeout(() => {
-          const el = document.getElementById('centerLabel');
-          if (el) { el.textContent = '[ THIS WAY ]'; el.classList.add('visible'); }
-        }, 1500);
+          const wrap = document.querySelector('.home-headline-wrap');
+          if (wrap) wrap.classList.add('fade-out');
+          setTimeout(() => {
+            const el = document.getElementById('centerLabel');
+            if (el) { el.textContent = '[ THIS WAY ]'; el.classList.add('visible'); }
+          }, 650);
+        }, 1000);
       }
       return;
     }
@@ -441,6 +448,8 @@ window.addEventListener('load', () => {
     if (btn) btn.classList.remove('visible');
     const lbl = document.getElementById('centerLabel');
     if (lbl) { lbl.classList.remove('visible'); lbl.textContent = ''; }
+    const wrap = document.querySelector('.home-headline-wrap');
+    if (wrap) wrap.classList.remove('fade-out');
   };
 
   document.getElementById('page-home')._syncPuzzleIntro = function() {
@@ -455,10 +464,11 @@ window.addEventListener('load', () => {
 
 /* ── WORK ── */
 const projects = [
-  { title: 'Quackables',             desc: 'brand identity & product design',             year: '2024', img: 'images/quckables.png' },
-  { title: 'NBA Ultimate 5',         desc: 'AI-driven fan engagement platform',           year: '2022', img: 'images/nba.png' },
-  { title: 'Creator Sports Network', desc: 'scalable creator-driven sports broadcasting', year: '2024', img: 'images/csn.png' },
-  { title: 'Nike Cryptokicks',       desc: 'NFT sneaker drop experience',                 year: '2022', img: 'images/nike.png' }
+  { title: 'Feelit',               desc: '',                                          year: '',     img: '' },
+  { title: 'Rawr',                 desc: '',                                          year: '',     img: '' },
+  { title: 'Quackables',           desc: 'brand identity & product design',           year: '2024', img: 'images/quckables.png' },
+  { title: 'Still in exploration', desc: '',                                          year: '',     img: '' },
+  { title: 'Still in exploration', desc: '',                                          year: '',     img: '' }
 ];
 const puzzlePaths = [
   `M 30,30 L 510,30 L 510,195 A 46,46 0 0 1 510,287 L 510,450 L 240,450 A 46,46 0 0 0 148,450 L 30,450 Z`,
@@ -492,11 +502,13 @@ const svgLayers = projects.map((p, i) => {
   });
   defs.appendChild(spG); g.appendChild(defs);
   const bg = document.createElementNS(NS2, 'path'); bg.setAttribute('d', d); bg.setAttribute('fill', '#111'); g.appendChild(bg);
-  const im = document.createElementNS(NS2, 'image');
-  im.setAttribute('href', p.img); im.setAttribute('x','0'); im.setAttribute('y','0');
-  im.setAttribute('width', String(VW)); im.setAttribute('height', String(VH));
-  im.setAttribute('preserveAspectRatio','xMidYMid slice'); im.setAttribute('clip-path', `url(#${cid})`);
-  g.appendChild(im);
+  if (p.img) {
+    const im = document.createElementNS(NS2, 'image');
+    im.setAttribute('href', p.img); im.setAttribute('x','0'); im.setAttribute('y','0');
+    im.setAttribute('width', String(VW)); im.setAttribute('height', String(VH));
+    im.setAttribute('preserveAspectRatio','xMidYMid slice'); im.setAttribute('clip-path', `url(#${cid})`);
+    g.appendChild(im);
+  }
   const ov = document.createElementNS(NS2, 'path'); ov.setAttribute('d', d); ov.setAttribute('fill','rgba(0,0,0,0.15)'); g.appendChild(ov);
   const sp = document.createElementNS(NS2, 'path'); sp.setAttribute('d', d); sp.setAttribute('fill', `url(#${spId})`); g.appendChild(sp);
   const edge = document.createElementNS(NS2, 'path'); edge.setAttribute('d', d); edge.setAttribute('fill','none');
@@ -539,7 +551,7 @@ function showP(i, rowEl) {
   positionPuzzle(rowEl);
   puzzleFloat.classList.add('visible');
   document.getElementById('statusDesc').textContent = projects[i].desc;
-  document.getElementById('statusYear').textContent = '/' + projects[i].year;
+  document.getElementById('statusYear').textContent = projects[i].year ? '/' + projects[i].year : '';
   curP = i;
 }
 
